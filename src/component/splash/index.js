@@ -3,8 +3,6 @@ import { node } from '../../utility/node';
 
 import { Logo } from '../logo';
 
-import { APP_NAME } from '../../constant';
-
 import './index.css';
 
 export const Splash = function() {
@@ -16,7 +14,7 @@ export const Splash = function() {
     logo: node('div|class:splash-logo'),
     description: {
       description: node('div|class:splash-description'),
-      name: node('h1:' + APP_NAME + '|class:splash-name'),
+      name: node('h1:Guidance|class:splash-name'),
       versionName: node('p:' + version.name + '|class:splash-version-name small'),
       versionNumber: node('p:Version ' + version.number + '|class:splash-version-number')
     }

@@ -1,31 +1,64 @@
-<svg viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .cross {
-      fill: #939BAE;
-    }
-    .circle {
-      fill: #252931;
-    }
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="obsidian" cx="50%" cy="42%" r="65%">
+      <stop offset="0" stop-color="#211f19"/>
+      <stop offset="0.72" stop-color="#12110e"/>
+      <stop offset="1" stop-color="#090907"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0d27a"/>
+      <stop offset="0.42" stop-color="#c79a43"/>
+      <stop offset="0.72" stop-color="#9d6d26"/>
+      <stop offset="1" stop-color="#ddb95f"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
 
-    @media (prefers-color-scheme: light) {
-      .cross {
-        fill: #939BAE;
-      }
-      .circle {
-        fill: #252931;
-      }
-    }
+  <circle cx="256" cy="256" r="250" fill="url(#obsidian)"/>
+  <circle cx="256" cy="256" r="246" fill="none" stroke="#342b1b" stroke-width="4"/>
 
-    @media (prefers-color-scheme: dark) {
-      .cross {
-        fill: #252931;
-      }
-      .circle {
-        fill: #939BAE;
-      }
-    }
-  </style>
-  <circle cx="256" cy="256" r="256" class="circle"/>
-  <path d="M374 224H138C132.477 224 128 228.477 128 234V278C128 283.523 132.477 288 138 288H374C379.523 288 384 283.523 384 278V234C384 228.477 379.523 224 374 224Z" class="cross"/>
-  <path d="M278 128H234C228.477 128 224 132.477 224 138V374C224 379.523 228.477 384 234 384H278C283.523 384 288 379.523 288 374V138C288 132.477 283.523 128 278 128Z" class="cross"/>
+  <!-- The opening at the crown is the emblem's visual signature. -->
+  <path d="M166 78A198 198 0 1 0 346 78" fill="none" stroke="#6f4d20" stroke-width="32" stroke-linecap="round" opacity=".45"/>
+  <path d="M166 78A198 198 0 1 0 346 78" fill="none" stroke="url(#gold)" stroke-width="22" stroke-linecap="round"/>
+  <path d="M166 78A198 198 0 1 0 346 78" fill="none" stroke="#f2d77f" stroke-width="2" stroke-linecap="round" opacity=".65"/>
+
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)">
+    <path d="M256 401C247 358 246 319 256 278C268 232 263 185 256 133" stroke-width="25"/>
+    <path d="M254 289C233 260 210 239 176 222C154 211 138 195 127 173" stroke-width="14"/>
+    <path d="M251 262C224 226 208 194 207 157" stroke-width="13"/>
+    <path d="M257 232C239 199 235 166 242 132" stroke-width="12"/>
+    <path d="M258 289C279 260 302 239 336 222C358 211 374 195 385 173" stroke-width="14"/>
+    <path d="M261 262C288 226 304 194 305 157" stroke-width="13"/>
+    <path d="M255 232C273 199 277 166 270 132" stroke-width="12"/>
+    <path d="M231 252C203 246 178 248 152 260" stroke-width="10"/>
+    <path d="M281 252C309 246 334 248 360 260" stroke-width="10"/>
+  </g>
+
+  <g fill="url(#gold)">
+    <path d="M256 62C279 87 278 111 256 134C234 111 233 87 256 62Z"/>
+    <path d="M207 111C229 129 231 149 210 169C190 153 189 133 207 111Z"/>
+    <path d="M305 111C283 129 281 149 302 169C322 153 323 133 305 111Z"/>
+    <path d="M152 143C178 153 187 172 174 197C149 189 140 171 152 143Z"/>
+    <path d="M360 143C334 153 325 172 338 197C363 189 372 171 360 143Z"/>
+    <path d="M113 151C137 157 148 174 140 198C116 193 105 176 113 151Z"/>
+    <path d="M399 151C375 157 364 174 372 198C396 193 407 176 399 151Z"/>
+    <path d="M139 237C158 236 169 244 171 260C152 265 140 257 139 237Z"/>
+    <path d="M373 237C354 236 343 244 341 260C360 265 372 257 373 237Z"/>
+  </g>
+
+  <g fill="none" stroke="url(#gold)" stroke-linecap="round">
+    <path d="M251 384C232 399 211 414 181 425" stroke-width="12"/>
+    <path d="M252 376C244 415 231 437 209 453" stroke-width="10"/>
+    <path d="M260 384C280 399 301 414 331 425" stroke-width="12"/>
+    <path d="M260 376C268 415 281 437 303 453" stroke-width="10"/>
+    <path d="M256 389V459" stroke-width="12"/>
+  </g>
+
+  <g fill="#f2d77f" opacity=".48">
+    <path d="M250 169h4v196h-4z"/>
+    <path d="M173 84A193 193 0 0 0 74 244l4 .3A189 189 0 0 1 177 87Z"/>
+  </g>
 </svg>

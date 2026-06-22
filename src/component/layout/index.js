@@ -244,7 +244,7 @@ layout.title = {
 
     } else {
 
-      title.textContent = 'New Tab';
+      title.textContent = 'Guidance';
 
     }
 
