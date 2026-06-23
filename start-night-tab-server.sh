@@ -10,11 +10,10 @@ PID_FILE="$LOG_DIR/night-tab-server.pid"
 mkdir -p "$LOG_DIR"
 
 if [ -f "$PID_FILE" ]; then
-  PID=$(cat "$PID_FILE")
+  OLD_PID=$(cat "$PID_FILE")
 
-  if kill -0 "$PID" 2>/dev/null; then
-    echo "night-tab-server.py is already running with PID $PID"
-    exit 0
+  if [ -n "$OLD_PID" ]; then
+    kill "$OLD_PID" 2>/dev/null || true
   fi
 fi
 
