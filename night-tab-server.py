@@ -159,11 +159,7 @@ def make_handler(config):
             return secrets.compare_digest(username, config["username"]) and secrets.compare_digest(password, config["password"])
 
         def request_auth(self):
-            self.send_response(HTTPStatus.UNAUTHORIZED)
-            self.send_header("WWW-Authenticate", 'Basic realm="nightTab config"')
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self.end_headers()
-            self.wfile.write(json.dumps({"error": "Authentication required"}).encode("utf-8"))
+            self.send_json(HTTPStatus.UNAUTHORIZED, {"error": "Authentication required"})
 
         def send_json(self, status, payload):
             body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
