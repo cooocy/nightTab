@@ -3,6 +3,7 @@ import { node } from '../../../../utility/node';
 import './index.css';
 
 export const text = ({
+  type = 'text',
   id = false,
   value = false,
   min = false,
@@ -12,7 +13,7 @@ export const text = ({
   func = false
 } = {}) => {
 
-  const input = node('input|type:text,autocomplete:off,autocorrect:off,autocapitalize:off,spellcheck:false,tabindex:1');
+  const input = node(`input|type:${type},autocomplete:off,autocorrect:off,autocapitalize:off,spellcheck:false,tabindex:1`);
 
   if (id) {
     input.setAttribute('id', id);

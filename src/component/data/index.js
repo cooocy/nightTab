@@ -119,6 +119,105 @@ data.import = {
   }
 };
 
+data.server = {
+  settingKey: APP_NAME + 'Server',
+  state: {
+    url: 'http://127.0.0.1:8765',
+    username: 'nighttab',
+    password: ''
+  },
+  loadSetting: () => {
+    const setting = data.get(data.server.settingKey);
+
+    if (setting && isJson(setting)) {
+      const parsedSetting = JSON.parse(setting);
+
+      data.server.state.url = parsedSetting.url || data.server.state.url;
+
+      data.server.state.username = parsedSetting.username || data.server.state.username;
+    }
+  },
+  saveSetting: () => {
+    data.set(data.server.settingKey, JSON.stringify({
+      url: data.server.state.url,
+      username: data.server.state.username
+    }));
+  },
+  authHeader: () => {
+    return 'Basic ' + window.btoa(unescape(encodeURIComponent(data.server.state.username + ':' + data.server.state.password)));
+  },
+  endpoint: () => {
+    return data.server.state.url.replace(/\/+$/, '') + '/api/config';
+  },
+  upload: () => {
+    const dataToUpload = data.load();
+
+    if (!dataToUpload) {
+      return Promise.reject(new Error(message.get('dataServerFeedbackNoLocalData')));
+    }
+
+    return fetch(data.server.endpoint(), {
+      method: 'PUT',
+      headers: {
+        'Authorization': data.server.authHeader(),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataToUpload)
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(data.server.errorMessage(response.status));
+      }
+
+      data.server.saveSetting();
+
+      return response.json();
+    });
+  },
+  download: () => {
+    return fetch(data.server.endpoint(), {
+      method: 'GET',
+      headers: {
+        'Authorization': data.server.authHeader()
+      }
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(data.server.errorMessage(response.status));
+      }
+
+      data.server.saveSetting();
+
+      return response.text();
+    }).then((responseText) => {
+      if (!isJson(responseText)) {
+        throw new Error(message.get('dataServerFeedbackInvalidJson'));
+      }
+
+      const dataToCheck = JSON.parse(responseText);
+
+      if (!dataToCheck[APP_NAME] && !dataToCheck[APP_NAME.toLowerCase()]) {
+        throw new Error(message.get('dataServerFeedbackInvalidAppJson'));
+      }
+
+      return responseText;
+    });
+  },
+  errorMessage: (status) => {
+    switch (status) {
+      case 400:
+        return message.get('dataServerFeedbackInvalidAppJson');
+
+      case 401:
+        return message.get('dataServerFeedbackAuth');
+
+      case 404:
+        return message.get('dataServerFeedbackMissing');
+
+      default:
+        return message.get('dataServerFeedbackFail');
+    }
+  }
+};
+
 data.validate = {
   paste: ({
     feedback = false
@@ -456,6 +555,8 @@ data.feedback.animation = {
 };
 
 data.init = () => {
+  data.server.loadSetting();
+
   data.restore(data.load());
 };
 

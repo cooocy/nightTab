@@ -211,6 +211,10 @@
     "message": "Backup",
     "description": "Label for the settings menu navigation."
   },
+  "menuNavDataSubNavServer": {
+    "message": "Server",
+    "description": "Label for the settings menu navigation."
+  },
   "menuNavDataSubNavClear": {
     "message": "Clear",
     "description": "Label for the settings menu navigation."
@@ -1771,6 +1775,34 @@
     "message": "This file can later be imported on this or another device.",
     "description": "Helper text for data backup."
   },
+  "menuContentDataServerUrl": {
+    "message": "Server URL",
+    "description": "Input label for backup data server URL."
+  },
+  "menuContentDataServerUsername": {
+    "message": "Username",
+    "description": "Input label for backup data server username."
+  },
+  "menuContentDataServerPassword": {
+    "message": "Password",
+    "description": "Input label for backup data server password."
+  },
+  "menuContentDataServerUpload": {
+    "message": "Upload to server",
+    "description": "Button to upload backup data to a server."
+  },
+  "menuContentDataServerDownload": {
+    "message": "Import from server",
+    "description": "Button to import backup data from a server."
+  },
+  "menuContentDataServerHelperPara1": {
+    "message": "Upload and import your {appName} Bookmarks and Settings through a private server.",
+    "description": "Helper text for data server sync."
+  },
+  "menuContentDataServerHelperPara2": {
+    "message": "The password is only kept until this page is reloaded.",
+    "description": "Helper text for data server sync password storage."
+  },
   "menuContentDataClearAll": {
     "message": "Clear all data",
     "description": "Button to clear all data."
@@ -2726,6 +2758,38 @@
   "dataFeedbackFailNotClipboardJson": {
     "message": "Not the right kind of data. Make sure the clipboard holds data from {appName} or a {appName} backup JSON file.",
     "description": "Paragraph for when backup data in clipboard is not valid JSON."
+  },
+  "dataServerFeedbackUploadSuccess": {
+    "message": "Uploaded {appName} Bookmarks and Settings to the server.",
+    "description": "Paragraph for when server backup upload succeeds."
+  },
+  "dataServerFeedbackDownloadSuccess": {
+    "message": "Downloaded {appName} Bookmarks and Settings from the server.",
+    "description": "Paragraph for when server backup download succeeds."
+  },
+  "dataServerFeedbackNoLocalData": {
+    "message": "No local {appName} data is available to upload.",
+    "description": "Paragraph for when no local backup data can be uploaded."
+  },
+  "dataServerFeedbackInvalidJson": {
+    "message": "The server response was not valid JSON.",
+    "description": "Paragraph for when server backup data is not valid JSON."
+  },
+  "dataServerFeedbackInvalidAppJson": {
+    "message": "The server data is not a valid {appName} backup.",
+    "description": "Paragraph for when server backup data is not valid app JSON."
+  },
+  "dataServerFeedbackAuth": {
+    "message": "The server rejected the username or password.",
+    "description": "Paragraph for when server backup authentication fails."
+  },
+  "dataServerFeedbackMissing": {
+    "message": "The server does not have a saved backup yet.",
+    "description": "Paragraph for when server backup data is missing."
+  },
+  "dataServerFeedbackFail": {
+    "message": "Could not connect to the server.",
+    "description": "Paragraph for when server backup sync fails."
   },
   "controlGeneralReset": {
     "message": "Reset to default",

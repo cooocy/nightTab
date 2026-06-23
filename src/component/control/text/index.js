@@ -6,6 +6,7 @@ import { set } from '../../../utility/set';
 export const Control_text = function ({
   object = {},
   path = false,
+  type = 'text',
   id = 'name',
   value = false,
   min = false,
@@ -27,6 +28,7 @@ export const Control_text = function ({
   }
 
   this.text = form.input.text({
+    type: type,
     id: id,
     classList: classList,
     func: () => {
